@@ -1,0 +1,23 @@
+\newif\ifenglish\englishtrue%
+\input{misc/config.tex}
+
+\documentclass[
+    fontsize=11pt,
+    paper=a4,
+    numbers=noenddot,
+    bibliography=totoc,
+]{scrartcl}
+
+\input{misc/preamble}
+\input{misc/acronyms.tex}
+
+\begin{document}
+
+\input{misc/seminar_header.tex}
+
+\input{sections/00_dummy_text.tex}
+
+\clearpage
+\printbibliography%
+
+\end{document}

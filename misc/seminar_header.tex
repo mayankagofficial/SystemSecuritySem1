@@ -1,0 +1,36 @@
+\begin{center}
+    \includegraphics[width=8cm]{%
+        \ifenglish%
+        images/upb_logo_en.pdf%
+        \else%
+        images/upb_logo_de.pdf%
+        \fi%
+    }\\[0.4cm]
+    
+    % \rule{12cm}{0.4pt}\\[0.4cm]
+    
+    \textbf{\Large \type{} Paper}\\[0.5cm]
+    \begin{minipage}{\textwidth}
+        \centering\huge\bfseries \makeatletter\textsf{\@title}\makeatother
+    \end{minipage}\\[0.5cm]
+
+    \ifdefempty{\originalPaper}{}{%
+        Based on the same-named paper by \citeauthor{\originalPaper} from \citeyear{\originalPaper}~\cite{\originalPaper}\\[0.5cm]
+    }
+
+    % \rule{12cm}{0.4pt}\\[0.6cm]
+
+    {Research Group \ResearchGroup}\\
+    {Paderborn, \today}\\[0.5cm]
+
+    \begin{minipage}{0.45\textwidth}
+        \emph{\ifenglish{}Author\else Autor\fi:} \\ \makeatletter\@author\makeatother%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushright}
+            \emph{Supervisor:} \\ \Supervisor%
+        \end{flushright}
+    \end{minipage}\\[0.4cm]
+    \rule{12cm}{0.4pt}
+\end{center}

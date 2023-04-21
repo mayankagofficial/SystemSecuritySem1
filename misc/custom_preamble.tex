@@ -1,0 +1,21 @@
+% example of a custom listing language definition
+\lstdefinelanguage{XML}{
+    morestring=[b]",
+    moredelim=[s][\bfseries\color{upbblue}]{<}{\ },
+    moredelim=[s][\bfseries\color{upbblue}]{</}{>},
+    moredelim=[l][\bfseries\color{upbblue}]{/>},
+    moredelim=[l][\bfseries\color{upbblue}]{>},
+    morecomment=[s]{<?}{?>},
+    morecomment=[s]{<!--}{-->},
+    alsoletter={-:},
+    identifierstyle=\color{upbdarkgreen},
+    keywordstyle=\color{upbblue},
+    stringstyle=\color{upborange},
+    commentstyle=\color{upbgray},
+}
+
+\usepackage{todonotes} % provides the \todo command
+
+\usepackage{pifont} % defines some symbols http://ctan.org/pkg/pifont
+\newcommand*{\cmark}{\ding{51}}% checkmark
+\newcommand*{\xmark}{\ding{53}}% crossmark

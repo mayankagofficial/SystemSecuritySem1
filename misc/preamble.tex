@@ -1,0 +1,220 @@
+\setcounter{tocdepth}{3} % Table of contents includes sections up to: Subsubsection
+\setcounter{secnumdepth}{3} % Sections are numbered up to: Subsubsection
+
+% Load packages
+\usepackage[utf8]{inputenc} % support of UTF-8 input text
+\usepackage[T1]{fontenc} % proper encoding of the output font
+\usepackage{lmodern} % original CM font doesn't work well with [T1]{fontenc}
+% use different sans font
+\usepackage[semibold]{sourcesanspro}
+\usepackage{microtype}
+\usepackage[all, defaultlines=2]{nowidow}
+
+% set language
+\ifenglish%
+    \usepackage[english]{babel}
+\else
+    \usepackage[ngerman]{babel}
+\fi
+
+% utility packages
+\usepackage{ifpdf} % if else structure that checks if a PDF is compiled
+\usepackage{ifthen} % adds support for if else structures
+
+% defining the UPB-colors
+\usepackage{xcolor}
+\definecolor{upbblue}{RGB}{0,62,121}
+\definecolor{upbdarkgray}{RGB}{45,45,45}
+\definecolor{upbgray}{RGB}{85,85,85}
+\definecolor{upblightgray}{RGB}{170,170,170}
+\definecolor{upbred}{RGB}{165,1,53}
+\definecolor{upbgreen}{RGB}{134,166,6}
+\definecolor{upbdarkgreen}{RGB}{94,126,20}
+\definecolor{upbcyan}{RGB}{4,156,206}
+\definecolor{upborange}{RGB}{202,109,0}
+\definecolor{upbcassis}{RGB}{169,57,131}
+\definecolor{upblightblue}{RGB}{0,127,185}
+
+%% Floats
+\usepackage{caption} % captions for floats
+\usepackage{standalone} % allows file with standalone class to be inputted
+
+
+% Figures
+\usepackage{graphicx} % adds functionality to \includegraphics
+\usepackage{subfig} % provides the \subfigure command
+\usepackage{placeins} % provides \FloatBarrier command
+\graphicspath{{images/}{figures/}} % so you don't have to provide the path for every image
+
+% Tables
+\usepackage{booktabs} % adds rules for tables in a formal style
+\usepackage{multirow} % add support for multi-rows
+\usepackage{multicol} % add support for multi-columns
+\usepackage{longtable} % long tables can break pages
+\usepackage{array} % provides >{} and <{} syntax for column definition
+% column types
+% (l)eft, (c)enter, (r)ight aligned
+% p{<length>} left alined with defined width (paragraph)
+% X left aligned with max possible width
+\usepackage{tabularx}
+% Y centered with max possible width
+\newcolumntype{Y}{>{\centering\arraybackslash\hspace{0pt}}X}
+% Z right aligned with max possible width
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+% x alias of p for consistency
+\newcolumntype{x}[1]{p{#1}}
+% y{<length>} centered with defined width
+\newcolumntype{y}[1]{>{\centering\arraybackslash}p{#1}}
+% z{<length>} centered with defined width
+\newcolumntype{z}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\usepackage[flushleft]{threeparttable} % text below tables
+
+% Math stuff and units
+\usepackage{latexsym, amsmath, amssymb, amsfonts, upgreek}
+\usepackage{siunitx}
+\newcommand{\mathup}{\mathrm}
+
+% Glossary
+\usepackage[nonumberlist, acronym, toc]{glossaries}
+
+% Enable quotes by \enquote{}
+\usepackage[autostyle, english=american, german=quotes]{csquotes}
+
+% Allows to create automata and fancy graphics
+\usepackage{tikz}
+
+% Source code listings
+\newcommand{\code}[1]{\texttt{#1}}
+\usepackage{listings}
+\lstset{
+    floatplacement=htp,
+    basicstyle=\ttfamily\footnotesize,
+    identifierstyle=\color{upbblue},
+    keywordstyle=\color{upborange},
+    stringstyle=\color{upbdarkgreen},
+    commentstyle=\color{upbgray},
+    columns=flexible,
+    tabsize=4,
+    aboveskip={1.5\baselineskip},
+    frame=tb,
+    framerule=\heavyrulewidth,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    breaklines=true,
+    backgroundcolor=,
+    breakautoindent=true,
+    captionpos=b,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+}
+
+
+\usepackage[ruled, vlined, linesnumbered, algo2e]{algorithm2e}
+
+% use some standards for mathematical expressions:
+\newcommand{\red}{{\rm red}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newenvironment{example}{\begin{quote}{\bf Example:}}{\end{quote}}
+% \newtheorem{definition}[theorem]{Definition}
+% gray definition boxes, that way you'll find them in the text
+\usepackage{shadethm}
+\newshadetheorem{sthm}[figure]{Definition}
+\newenvironment{definition}[1][]{%
+    \definecolor{shadethmcolor}{rgb}{.9,.9,.9}%
+    \begin{sthm}[#1]%
+}{%
+    \end{sthm}%
+}
+
+%% type setting
+\usepackage[defaultlines=2,all]{nowidow} % prevents widows and orphans (single lines at beginning/end of page) enforces minimum of <defaultline> instead
+\usepackage{microtype} % improves typesetting
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+
+% align footnotes
+\usepackage[hang,marginal]{footmisc}
+\def\footnotemargin{1em}
+
+% smaller dot for itemize
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% define paragraphs to have a dot at the end
+\let\origparagraph\paragraph%
+\renewcommand{\paragraph}[1]{\origparagraph{#1.}}
+
+% apparently some packages used here utilize deprecated KOMA-Script functionalities
+% scrhack ensures, that those packages don't break suddenly and removes the deprecation warnings from the log
+\usepackage{scrhack}
+
+% bibliography
+% we don't use biber, because we it is very slow when parsing cryptobib and rfcbib
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{literature/literature.bib}
+\addbibresource{literature/cryptobib/crypto.bib}
+\addbibresource{literature/rfcbib/data/rfc.bib}
+
+% allow urls to break at hyphens -
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+
+% Hyperlinks and menu for your document
+\usepackage[%
+    breaklinks,%
+    hyperindex,%
+    colorlinks,%
+    anchorcolor=black,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    menucolor=black,%
+    urlcolor=black,%
+    pdftex%
+]{hyperref} % pagebackref: Add page number to the references where they can be found
+
+% set autoref names
+\addto\extrasenglish{%
+\renewcommand{\chapterautorefname}{Chapter}%
+\renewcommand{\sectionautorefname}{Section}%
+\renewcommand{\subsectionautorefname}{Section}%
+\renewcommand{\subsubsectionautorefname}{Section}%
+\renewcommand{\paragraphautorefname}{Paragraph}%
+\renewcommand{\subparagraphautorefname}{Paragraph}%
+\renewcommand{\appendixautorefname}{Appendix}%
+}
+
+\input{misc/custom_preamble.tex}
+
+% DO NOT LOAD ANY OF YOUR PACKAGES BEYOND THIS PACKAGE
+
+\makeatletter
+\AtBeginDocument{
+    \hypersetup{
+        pdftitle = {\@title},
+        pdfauthor = {\@author},
+        pdfsubject={\@title},
+    }
+}
+\makeatother
+
+% Use the same counter for tables and figures
+\makeatletter
+\AtBeginDocument{
+\let\c@table\c@figure
+\let\c@lstlisting\c@table
+\let\c@algocf\c@lstlisting
+}
+\makeatother
+
+\ifpdf
+    \hypersetup{linktocpage=false} % false=links are section names, true=links are page numbers, IMPORTANT: in dvi2ps mode, 'true' is required!
+\else
+    \hypersetup{linktocpage=true} % false=links are section names, true=links are page numbers, IMPORTANT: in dvi2ps mode, 'true' is required!
+    \usepackage[hyphenbreaks]{breakurl}
+\fi
